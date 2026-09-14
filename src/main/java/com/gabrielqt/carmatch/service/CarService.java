@@ -1,6 +1,8 @@
 package com.gabrielqt.carmatch.service;
 
 
+import com.gabrielqt.carmatch.dto.FinancingRequest;
+import com.gabrielqt.carmatch.dto.FinancingResponse;
 import com.gabrielqt.carmatch.model.Car;
 import org.springframework.stereotype.Service;
 
@@ -27,5 +29,24 @@ public class CarService {
                 .filter(car -> car.id().equals(id))
                 .findFirst()
                 .orElseThrow();
+    }
+
+    public FinancingResponse simulate(Long id, FinancingRequest request) {
+
+        Car car = findById(id);
+
+        double financedAmount = car.price() - request.downPayment();
+
+        double installmentValue =
+                financedAmount / request.installments();
+
+        return new FinancingResponse(
+                car.brand() + " " + car.model(),
+                car.price(),
+                request.downPayment(),
+                financedAmount,
+                request.installments(),
+                installmentValue
+        );
     }
 }
