@@ -1,2 +1,6 @@
+com/gabrielqt/carmatch/service/CarService.class
+com/gabrielqt/carmatch/CarmatchApplication.class
 com/gabrielqt/carmatch/dto/FinancingRequest.class
+com/gabrielqt/carmatch/controller/CarController.class
 com/gabrielqt/carmatch/dto/FinancingResponse.class
+com/gabrielqt/carmatch/model/Car.class
